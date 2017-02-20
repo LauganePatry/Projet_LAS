@@ -22,19 +22,19 @@ namespace AtelierXNA
         
         private void CréerItem(string nom, string catégorie)
         {
-            // Normaliser le nom de la catégorie pour calquer le nom des classes
-            catégorie = Char.ToUpper(catégorie[0]) + catégorie.Substring(1).ToLower();
+        //    // Normaliser le nom de la catégorie pour calquer le nom des classes
+        //    catégorie = Char.ToUpper(catégorie[0]) + catégorie.Substring(1).ToLower();
 
-            // Ajouter le nom du Namespace pour qualifier entièrement
-            catégorie = typeof(Program).Namespace + "." + catégorie;
+        //    // Ajouter le nom du Namespace pour qualifier entièrement
+        //    catégorie = typeof(Program).Namespace + "." + catégorie;
 
-            // Détermination d'un type en fonction de la chaine 'catégorie'
-            Type typeVoulu = Type.GetType(catégorie);
+        //    // Détermination d'un type en fonction de la chaine 'catégorie'
+        //    Type typeVoulu = Type.GetType(catégorie);
 
-            // Tentative d'instanciation : le type de la valeur de retour est 'Object'
-            var objetCréé = Activator.CreateInstance(typeVoulu, nom, titre, durée);
+        //    // Tentative d'instanciation : le type de la valeur de retour est 'Object'
+        //    var objetCréé = Activator.CreateInstance(typeVoulu, nom, titre, durée);
 
-            Items.Add(objetCréé as Participant);
+        //    Items.Add(objetCréé as Participant);
         }
 
 

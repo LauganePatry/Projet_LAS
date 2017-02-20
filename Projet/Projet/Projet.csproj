@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ComposantsDeBase\ComposantsDeBase.csproj">
-      <Project>{60d36f98-0d0f-4657-9402-eead85dff397}</Project>
+      <Project>{49f93be3-39ee-44a6-8956-60c8d9b0d1dc}</Project>
       <Name>ComposantsDeBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjetContent\ProjetContent.contentproj">

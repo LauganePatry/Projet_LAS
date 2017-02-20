@@ -61,6 +61,7 @@ namespace AtelierXNA
             Components.Add(GestionInput);
             Components.Add(CaméraJeu);
             //Components.Add(new ArrièrePlanDéroulant(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
+            Components.Add(new Mage(this, "Mage", 0.05f, Vector3.Zero, positionObjet3, "bob", 0, 0, 0, 0, 1));
             Components.Add(new Afficheur3D(this));
             Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
             base.Initialize();
