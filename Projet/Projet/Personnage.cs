@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace AtelierXNA
 {
-    abstract class Personnage : PrimitiveDeBaseAnimée
+    abstract class Personnage : ObjetDeBase
     {
         public string Nom { get; protected set; }
         public int PtsDeVie { get; protected set; }
@@ -16,8 +16,8 @@ namespace AtelierXNA
         public int Sagesse { get; protected set; }
         public int PtsDéfense { get; protected set; }
 
-        protected Personnage(Game jeu, float homothétieInitiale, Vector3 rotationInitiale, Vector3 positionInitiale, float intervalleMAJ, string nom, int force, int dextérité, int intelligence, int sagesse, int ptsDeVie)
-            : base(jeu, homothétieInitiale,rotationInitiale,positionInitiale,intervalleMAJ)
+        protected Personnage(Game jeu, String nomModèle, float échelleInitiale, Vector3 rotationInitiale, Vector3 positionInitiale, string nom, int force, int dextérité, int intelligence, int sagesse, int ptsDeVie)
+            : base(jeu, nomModèle, échelleInitiale, rotationInitiale, positionInitiale)
         {
             Nom = nom;
             Dextérité = dextérité;
