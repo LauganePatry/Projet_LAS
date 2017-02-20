@@ -16,13 +16,25 @@ namespace AtelierXNA
     /// </summary>
     public class Jeu : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        const float INTERVALLE_CALCUL_FPS = 1f;
+        const float INTERVALLE_MAJ_STANDARD = 1f / 60f;
+
+        GraphicsDeviceManager PériphériqueGraphique { get; set; }
+        SpriteBatch GestionSprites { get; set; }
+        RessourcesManager<SpriteFont> GestionnaireDeFonts { get; set; }
+        RessourcesManager<Texture2D> GestionnaireDeTextures { get; set; }
+        RessourcesManager<Model> GestionnaireDeModèles { get; set; }
+        RessourcesManager<Effect> GestionnaireDeShaders { get; set; }
+        Caméra CaméraJeu { get; set; }
+        InputManager GestionInput { get; set; }
 
         public Jeu()
         {
-            graphics = new GraphicsDeviceManager(this);
+            PériphériqueGraphique = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            PériphériqueGraphique.SynchronizeWithVerticalRetrace = false;
+            IsFixedTimeStep = false;
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -33,30 +45,43 @@ namespace AtelierXNA
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Vector3 positionObjet1 = new Vector3(-2, 0, 0);
+            Vector3 positionObjet2 = new Vector3(0, 1.5f, 0);
+            Vector3 positionObjet3 = new Vector3(0, 0, 0);
+            Vector3 positionObjet4 = new Vector3(0, -1.5f, 0);
+            Vector3 positionObjet5 = new Vector3(2, 0, 0);
+            Vector3 positionLumière = new Vector3(0, 0f, 3f);
+            Vector3 positionCaméra = new Vector3(0, 0, 5);
+            Vector3 cibleCaméra = new Vector3(0, 0, 0);
 
+            CaméraJeu = new CaméraSubjective(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
+
+            CréationDuPanierDeServices();
+
+            Components.Add(GestionInput);
+            Components.Add(CaméraJeu);
+            //Components.Add(new ArrièrePlanDéroulant(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
+            Components.Add(new Afficheur3D(this));
+            Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
+        private void CréationDuPanierDeServices()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            GestionnaireDeFonts = new RessourcesManager<SpriteFont>(this, "Fonts");
+            GestionnaireDeTextures = new RessourcesManager<Texture2D>(this, "Textures");
+            GestionnaireDeModèles = new RessourcesManager<Model>(this, "Models");
+            GestionnaireDeShaders = new RessourcesManager<Effect>(this, "Effects");
+            GestionInput = new InputManager(this);
+            GestionSprites = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
+            Services.AddService(typeof(RessourcesManager<SpriteFont>), GestionnaireDeFonts);
+            Services.AddService(typeof(RessourcesManager<Texture2D>), GestionnaireDeTextures);
+            Services.AddService(typeof(RessourcesManager<Model>), GestionnaireDeModèles);
+            Services.AddService(typeof(RessourcesManager<Effect>), GestionnaireDeShaders);
+            Services.AddService(typeof(InputManager), GestionInput);
+            Services.AddService(typeof(Caméra), CaméraJeu);
+            Services.AddService(typeof(SpriteBatch), GestionSprites);
         }
 
         /// <summary>
@@ -66,13 +91,16 @@ namespace AtelierXNA
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            // TODO: Add your update logic here
-
+            GérerClavier();
             base.Update(gameTime);
+        }
+
+        private void GérerClavier()
+        {
+            if (GestionInput.EstEnfoncée(Keys.Escape))
+            {
+                Exit();
+            }
         }
 
         /// <summary>
@@ -81,7 +109,7 @@ namespace AtelierXNA
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
