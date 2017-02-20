@@ -31,6 +31,7 @@ namespace AtelierXNA
         {
             get { return PtsDeVie == 0; }
         }
+        public int Niveau { get; private set; }
 
         protected Personnage(Game jeu, String nomModèle, float échelleInitiale, Vector3 rotationInitiale, Vector3 positionInitiale, string nom, int force, int dextérité, int intelligence, int sagesse, int ptsDeVie)
             : base(jeu, nomModèle, échelleInitiale, rotationInitiale, positionInitiale)
@@ -41,20 +42,25 @@ namespace AtelierXNA
             Intelligence = intelligence;
             Sagesse = sagesse;
             PtsDeVie = ptsDeVie;
+            Niveau = 1;
         }
 
         public abstract int Attaquer();
+        public virtual void MonterDeNiveau()
+        {
+            ++Niveau;
+        }
 
-        public void ModifierVitalité(int dommages)
+        public void ModifierVitalité(int dégats)
         {
             int modificationVitalité;
-            if(dommages > 0)
+            if(dégats > 0)
             {
-                modificationVitalité = (int)Math.Round((double)dommages*PtsDéfense/100);
+                modificationVitalité = (int)Math.Round((double)dégats*(1-PtsDéfense/100));
             }
             else
             {
-                modificationVitalité = dommages;
+                modificationVitalité = dégats;
             }
             PtsDeVie -= modificationVitalité;
         }
