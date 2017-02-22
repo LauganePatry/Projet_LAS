@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Archer.cs" />
     <Compile Include="BoucleDeJeu.cs" />
+    <Compile Include="DialogueMenu.cs" />
     <Compile Include="Guerrier.cs" />
     <Compile Include="Guérisseur.cs" />
     <Compile Include="Item.cs" />
