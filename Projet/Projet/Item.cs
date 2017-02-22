@@ -6,9 +6,9 @@ using Microsoft.Xna;
 
 namespace AtelierXNA
 {
-    class Item
+    static class Item
     {
-        List<Item> Items { get; set; }
+        static List<Item> Items { get; set; }
         string Nom { get; set; }
         string Catégorie { get; set; }
 
@@ -20,7 +20,7 @@ namespace AtelierXNA
         }
 
         
-        private void CréerItem(string nom, string catégorie)
+        private void CréerItem(string description)
         {
         //    // Normaliser le nom de la catégorie pour calquer le nom des classes
         //    catégorie = Char.ToUpper(catégorie[0]) + catégorie.Substring(1).ToLower();
