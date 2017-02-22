@@ -100,6 +100,7 @@ namespace AtelierXNA
                     if (Menu.ÉtatJouer)
                     {
                         ÉtatJeu = États.JEU;
+                        DémarrerPhaseDeJeu();
                     }
                     if (Menu.ÉtatInventaire)
                     {
@@ -107,7 +108,6 @@ namespace AtelierXNA
                     }
                     break;
                 case États.JEU:
-                    DémarrerPhaseDeJeu();
                     break;
             }
             base.Update(gameTime);
@@ -115,7 +115,6 @@ namespace AtelierXNA
 
         private void DémarrerPhaseDeJeu()
         {
-            Components.Remove(Menu);
             Components.Add(new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, new Vector3(0, 0, 0), "bob", 0, 0, 0, 0, 1));
         }
 
@@ -134,8 +133,6 @@ namespace AtelierXNA
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
