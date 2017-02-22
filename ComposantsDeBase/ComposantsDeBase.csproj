@@ -64,6 +64,7 @@
     <Compile Include="ArrièrePlan.cs" />
     <Compile Include="ArrièrePlanDéroulant.cs" />
     <Compile Include="ArrièrePlanSpatial.cs" />
+    <Compile Include="BoutonDeCommande.cs" />
     <Compile Include="Caméra.cs" />
     <Compile Include="CaméraFixe.cs" />
     <Compile Include="CaméraSubjective.cs" />

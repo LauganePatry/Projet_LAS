@@ -11,9 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AtelierXNA
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
+    enum États { MENU, INVENTAIRE, QUITTER, CONNEXION, JEU, FIN_DE_JEU };
     public class Jeu : Microsoft.Xna.Framework.Game
     {
         const float INTERVALLE_CALCUL_FPS = 1f;
@@ -27,6 +25,7 @@ namespace AtelierXNA
         RessourcesManager<Effect> GestionnaireDeShaders { get; set; }
         Caméra CaméraJeu { get; set; }
         InputManager GestionInput { get; set; }
+        États ÉtatCourrant = États.MENU;
 
         public Jeu()
         {
@@ -60,7 +59,7 @@ namespace AtelierXNA
 
             Components.Add(GestionInput);
             Components.Add(CaméraJeu);
-            //Components.Add(new ArrièrePlanDéroulant(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
+            Components.Add(new ArrièrePlanDéroulant(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
             Components.Add(new Mage(this, "GuerrierB", 0.05f, Vector3.Zero, positionObjet3, "bob", 0, 0, 0, 0, 1));
             Components.Add(new Afficheur3D(this));
             Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
