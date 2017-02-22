@@ -25,7 +25,8 @@ namespace AtelierXNA
         RessourcesManager<Effect> GestionnaireDeShaders { get; set; }
         Caméra CaméraJeu { get; set; }
         InputManager GestionInput { get; set; }
-        États ÉtatCourrant = États.MENU;
+        États ÉtatJeu = États.MENU;
+        DialogueMenu Menu;
 
         public Jeu()
         {
@@ -52,15 +53,16 @@ namespace AtelierXNA
             Vector3 positionLumière = new Vector3(0, 0f, 3f);
             Vector3 positionCaméra = new Vector3(0, 0, 5);
             Vector3 cibleCaméra = new Vector3(0, 0, 0);
-
+            Vector2 dimensionDialogue = new Vector2(Window.ClientBounds.Width / 3, Window.ClientBounds.Height);
+            Menu = new DialogueMenu(this, dimensionDialogue);
             CaméraJeu = new CaméraSubjective(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
 
             CréationDuPanierDeServices();
 
             Components.Add(GestionInput);
             Components.Add(CaméraJeu);
-            Components.Add(new ArrièrePlanDéroulant(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
-            Components.Add(new Mage(this, "GuerrierB", 0.05f, Vector3.Zero, positionObjet3, "bob", 0, 0, 0, 0, 1));
+            Components.Add(Menu);
+            Components.Add(new ArrièrePlanSpatial(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
             Components.Add(new Afficheur3D(this));
             Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
             base.Initialize();
@@ -92,7 +94,29 @@ namespace AtelierXNA
         protected override void Update(GameTime gameTime)
         {
             GérerClavier();
+            switch (ÉtatJeu)
+            {
+                case États.MENU:
+                    if (Menu.ÉtatJouer)
+                    {
+                        ÉtatJeu = États.JEU;
+                    }
+                    if (Menu.ÉtatInventaire)
+                    {
+                        ÉtatJeu = États.INVENTAIRE;
+                    }
+                    break;
+                case États.JEU:
+                    DémarrerPhaseDeJeu();
+                    break;
+            }
             base.Update(gameTime);
+        }
+
+        private void DémarrerPhaseDeJeu()
+        {
+            Components.Remove(Menu);
+            Components.Add(new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, new Vector3(0, 0, 0), "bob", 0, 0, 0, 0, 1));
         }
 
         private void GérerClavier()
