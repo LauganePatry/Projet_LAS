@@ -65,6 +65,7 @@
     <Compile Include="Guerrier.cs" />
     <Compile Include="Guérisseur.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemsManager.cs" />
     <Compile Include="Mage.cs" />
     <Compile Include="Paladin.cs" />
     <Compile Include="Personnage.cs" />
