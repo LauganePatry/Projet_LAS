@@ -101,6 +101,10 @@ namespace AtelierXNA
                     {
                         ÉtatJeu = États.JEU;
                         DémarrerPhaseDeJeu();
+                        Menu.BtnJouer.Enabled = false;
+                        Menu.BtnJouer.Visible = false;
+                        Menu.BtnInventaire.Enabled = false;
+                        Menu.BtnInventaire.Visible = false;
                     }
                     if (Menu.ÉtatInventaire)
                     {

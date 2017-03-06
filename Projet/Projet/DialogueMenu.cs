@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AtelierXNA
 {
@@ -11,11 +11,12 @@ namespace AtelierXNA
         const int NB_ZONES_DIALOGUE = 3; //Cette constante doit valoir 3 au minimum
         Vector2 DimensionDialogue { get; set; }
         Rectangle RectangleDestination { get; set; }
-        BoutonDeCommande BtnJouer { get; set; }
+        public BoutonDeCommande BtnJouer { get; private set; }
         public bool ÉtatJouer { get; set; }
-        BoutonDeCommande BtnInventaire { get; set; }
+        public BoutonDeCommande BtnInventaire { get; private set; }
         public bool ÉtatInventaire { get; set; }
-        BoutonDeCommande BtnQuitter { get; set; }
+        public BoutonDeCommande BtnQuitter { get; private set; }
+        SpriteFont Police { get; set; }
 
         public DialogueMenu(Game jeu, Vector2 dimensionDialogue)
            : base(jeu)
@@ -30,14 +31,18 @@ namespace AtelierXNA
         public override void Initialize()
         {
             int hauteurBouton = RectangleDestination.Height / (NB_ZONES_DIALOGUE + 1);
+            Police = Game.Content.Load<SpriteFont>("Fonts/" + "Arial20");
 
+            Vector2 DimensionBouton = Police.MeasureString("Jouer");
             Vector2 PositionBouton = new Vector2(RectangleDestination.X + RectangleDestination.Width / 2f, (NB_ZONES_DIALOGUE - 2) * hauteurBouton);
             BtnJouer = new BoutonDeCommande(Game, "Jouer", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Jouer, INTERVALLE_MAJ_STANDARD);
 
+            DimensionBouton = Police.MeasureString("Inventaire");
             PositionBouton = new Vector2(RectangleDestination.X + RectangleDestination.Width / 2f, (NB_ZONES_DIALOGUE - 1) * hauteurBouton);
             BtnInventaire = new BoutonDeCommande(Game, "Inventaire", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Inventaire, INTERVALLE_MAJ_STANDARD);
 
-            PositionBouton = new Vector2(RectangleDestination.X + RectangleDestination.Width / 2f, NB_ZONES_DIALOGUE * hauteurBouton);
+            DimensionBouton = Police.MeasureString("Quitter");
+            PositionBouton = new Vector2(Game.Window.ClientBounds.Width - DimensionBouton.X / 2, Game.Window.ClientBounds.Height - DimensionBouton.Y / 2);
             BtnQuitter = new BoutonDeCommande(Game, "Quitter", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Quitter, INTERVALLE_MAJ_STANDARD);
 
             Game.Components.Add(BtnJouer);
