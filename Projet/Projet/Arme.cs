@@ -9,8 +9,8 @@ namespace AtelierXNA
     {
         int Attaque { get; set; }
 
-        public Arme(int numeroID, string nom, int niveauRequis, string rareté, string description)
-            :base(numeroID, nom, niveauRequis, rareté)
+        public Arme(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, string rareté, string description)
+            :base(numeroID, catégoriePersonnage, nom, niveauRequis, rareté)
         {
             string[] tableauDescription = description.Split('|');
             Attaque = int.Parse(tableauDescription[0]);

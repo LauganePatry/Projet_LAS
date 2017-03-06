@@ -20,24 +20,25 @@ namespace AtelierXNA
 
             // Extraction du nom et de la catégorie de l'item du string description
             string[] tableauStatistiques = description.Split(séparateur);
-            string catégorie = tableauStatistiques[0];
-            int numeroID = int.Parse(tableauStatistiques[1]);
-            string nom = tableauStatistiques[2];
-            int niveauRequis = int.Parse(tableauStatistiques[3]);
-            string rareté = tableauStatistiques[4];
-            string statistiques = tableauStatistiques[5];
+            string catégorieItem = tableauStatistiques[0];
+            string catégoriePersonnage = tableauStatistiques[1];
+            int numeroID = int.Parse(tableauStatistiques[2]);
+            string nom = tableauStatistiques[3];
+            int niveauRequis = int.Parse(tableauStatistiques[4]);
+            string rareté = tableauStatistiques[5];
+            string statistiques = tableauStatistiques[6];
 
             // Normaliser le nom de la catégorie pour calquer le nom des classes (Exemple : (J) + (eu) = Jeu)
-            catégorie = Char.ToUpper(catégorie[0]) + catégorie.Substring(1).ToLower();
+            catégorieItem = Char.ToUpper(catégorieItem[0]) + catégorieItem.Substring(1).ToLower();
 
             // Ajouter le nom du Namespace pour qualifier entièrement
-            catégorie = typeof(Program).Namespace + "." + catégorie;
+            catégorieItem = typeof(Program).Namespace + "." + catégorieItem;
 
             // Détermination d'un type en fonction de la chaine 'catégorie'
-            Type typeVoulu = Type.GetType(catégorie);
+            Type typeVoulu = Type.GetType(catégorieItem);
 
             // Tentative d'instanciation : le type de la valeur de retour est 'Object'
-            var objetCréé = Activator.CreateInstance(typeVoulu, numeroID, nom, niveauRequis, rareté, statistiques);
+            var objetCréé = Activator.CreateInstance(typeVoulu, numeroID, catégoriePersonnage, nom, niveauRequis, rareté, statistiques);
 
             Items.Add(objetCréé as Item);
         }
