@@ -8,10 +8,11 @@ namespace AtelierXNA
 {
     class Item
     {
-        string Nom { get; set; }
-        string CatégoriePersonnage { get; set; }
-        int NiveauRequis { get; set; }
         int NumeroID { get; set; }
+        string CatégoriePersonnage { get; set; }
+        string Nom { get; set; }
+        int NiveauRequis { get; set; }
+        string Rareté { get; set; }
 
         public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, string rareté)
         {
@@ -19,6 +20,7 @@ namespace AtelierXNA
             NiveauRequis = niveauRequis;
             NumeroID = numeroID;
             CatégoriePersonnage = catégoriePersonnage;
+            Rareté = rareté;
         }
     }
 }
