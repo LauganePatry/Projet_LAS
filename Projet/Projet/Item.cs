@@ -12,9 +12,9 @@ namespace AtelierXNA
         string CatégoriePersonnage { get; set; }
         string Nom { get; set; }
         int NiveauRequis { get; set; }
-        string Rareté { get; set; }
+        int Rareté { get; set; }
 
-        public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, string rareté)
+        public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté)
         {
             Nom = nom;
             NiveauRequis = niveauRequis;
