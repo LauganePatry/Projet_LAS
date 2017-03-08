@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AtelierXNA
 {
-    enum OrdreDraw { ARRIÈRE_PLAN, AVANT_PLAN};
+    enum OrdreDraw { ARRIÈRE_PLAN, MILIEU, AVANT_PLAN};
     enum États { MENU, INVENTAIRE, QUITTER, CONNEXION, JEU, FIN_DE_JEU };
     public class Jeu : Microsoft.Xna.Framework.Game
     {
@@ -120,7 +120,7 @@ namespace AtelierXNA
         private void DémarrerPhaseDeJeu()
         {
             Guerrier pion = new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, Vector3.Zero, "bob", 0, 0, 0, 0, 1);
-            pion.DrawOrder = (int)OrdreDraw.ARRIÈRE_PLAN;
+            pion.DrawOrder = (int)OrdreDraw.MILIEU;
             Components.Add(pion);
         }
 
