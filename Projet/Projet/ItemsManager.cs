@@ -25,7 +25,7 @@ namespace AtelierXNA
             int numeroID = int.Parse(tableauStatistiques[2]);
             string nom = tableauStatistiques[3];
             int niveauRequis = int.Parse(tableauStatistiques[4]);
-            string rareté = tableauStatistiques[5];
+            double rareté = double.Parse(tableauStatistiques[5]);
             string statistiques = tableauStatistiques[6];
 
             // Normaliser le nom de la catégorie pour calquer le nom des classes (Exemple : (J) + (eu) = Jeu)
