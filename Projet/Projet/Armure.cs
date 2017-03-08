@@ -9,7 +9,7 @@ namespace AtelierXNA
     {
         int Défense { get; set; }
 
-        public Armure(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, double rareté, string description)
+        public Armure(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté, string description)
             :base(numeroID, catégoriePersonnage, nom, niveauRequis, rareté)
         {
             string[] tableauDescription = description.Split('|');

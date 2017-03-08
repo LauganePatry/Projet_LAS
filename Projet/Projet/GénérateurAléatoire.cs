@@ -41,7 +41,7 @@ namespace AtelierXNA
 
         static public List<Item> GénérerItemsÀDonnerPerdant(List<Item> listeItem)
         {
-            List<Item> listeItemsDisponiblesPerdant = listeItem.Where(x => x.Rareté != 0.1).ToList();
+            List<Item> listeItemsDisponiblesPerdant = listeItem.Where(x => x.Rareté != 10).ToList();
             List<Item> ListeItemsÀDonner = new List<Item>();
 
             for (int j = 0; j < 5; ++j)
