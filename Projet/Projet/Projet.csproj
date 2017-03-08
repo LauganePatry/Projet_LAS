@@ -64,6 +64,7 @@
     <Compile Include="DialogueMenu.cs" />
     <Compile Include="Guerrier.cs" />
     <Compile Include="Guérisseur.cs" />
+    <Compile Include="GénérateurAléatoire.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemsManager.cs" />
     <Compile Include="Mage.cs" />

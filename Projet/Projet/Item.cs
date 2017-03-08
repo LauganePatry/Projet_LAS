@@ -6,13 +6,13 @@ using Microsoft.Xna;
 
 namespace AtelierXNA
 {
-    class Item
+    public class Item
     {
-        int NumeroID { get; set; }
-        string CatégoriePersonnage { get; set; }
-        string Nom { get; set; }
-        int NiveauRequis { get; set; }
-        int Rareté { get; set; }
+        public int NumeroID { get; private set; }
+        public string CatégoriePersonnage { get; private set; }
+        public string Nom { get; private set; }
+        public int NiveauRequis { get; private set; }
+        public int Rareté {get; private set; }
 
         public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté)
         {
