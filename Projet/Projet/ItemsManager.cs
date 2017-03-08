@@ -7,7 +7,7 @@ namespace AtelierXNA
 {
     static class ItemsManager
     {
-        static List<Item> Items { get; set; }
+        public static List<Item> Items { get; set; }
 
         static ItemsManager()
         {
