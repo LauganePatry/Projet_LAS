@@ -20,15 +20,15 @@ namespace AtelierXNA
 
             for (int j = 0; j < 5; ++j)
             {
-                double somme = listeItem.Sum(x => x.Rareté);
-                somme = Générateur.NextDouble() * somme;
+                double total = listeItem.Sum(x => x.Rareté);
+                total = Générateur.NextDouble() * total;
                 double cumul = 0;
 
                 for (int i = 0; i < listeItem.Count; ++i)
                 {
                     cumul += listeItem[i].Rareté;
 
-                    if (cumul >= somme)
+                    if (cumul >= total)
                     {
                         ListeItemsÀDonner.Add(listeItem[i]);
                         listeItem.Remove(listeItem[i]);
