@@ -60,9 +60,21 @@ namespace AtelierXNA
             ÉtatJouer = true;
         }
 
-        public void Quitter()
+        private void Quitter()
         {
             Game.Exit();
+        }
+
+        public void VoirBouttonMenu(bool x)
+        {
+            BtnJouer.Enabled = x;
+            BtnJouer.Visible = x;
+            BtnInventaire.Enabled = x;
+            BtnInventaire.Visible = x;
+            BtnQuitter.Enabled = x;
+            BtnQuitter.Visible = x;
+            ÉtatInventaire = false;
+            ÉtatJouer = false;
         }
     }
 }

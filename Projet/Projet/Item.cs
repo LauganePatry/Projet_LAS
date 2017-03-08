@@ -6,6 +6,7 @@ using Microsoft.Xna;
 
 namespace AtelierXNA
 {
+    enum NomRareté { COMMUN, RARE, ÉPIQUE, LÉGENDAIRE};
     public class Item
     {
         public int NumeroID { get; private set; }
