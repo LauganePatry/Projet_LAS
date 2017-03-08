@@ -49,8 +49,7 @@ namespace AtelierXNA
 
       protected override void LoadContent()
       {
-         //GestionSprites = Game.Services.GetService(typeof(SpriteBatch)) as SpriteBatch;
-         GestionSprites = new SpriteBatch(Game.GraphicsDevice);
+         GestionSprites = Game.Services.GetService(typeof(SpriteBatch)) as SpriteBatch;
          GestionnaireDeFonts = Game.Services.GetService(typeof(RessourcesManager<SpriteFont>)) as RessourcesManager<SpriteFont>;
          policeDeCaractères = GestionnaireDeFonts.Find(NomFont); 
       }

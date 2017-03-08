@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace AtelierXNA
 {
+    enum OrdreDraw { ARRIÈRE_PLAN, MILIEU, AVANT_PLAN};
     enum États { MENU, INVENTAIRE, QUITTER, CONNEXION, JEU, FIN_DE_JEU };
     public class Jeu : Microsoft.Xna.Framework.Game
     {
@@ -26,7 +28,7 @@ namespace AtelierXNA
         Caméra CaméraJeu { get; set; }
         InputManager GestionInput { get; set; }
         États ÉtatJeu = États.MENU;
-        DialogueMenu Menu;
+        DialogueMenu MenuAccueil;
 
         public Jeu()
         {
@@ -54,17 +56,17 @@ namespace AtelierXNA
             Vector3 positionCaméra = new Vector3(0, 0, 5);
             Vector3 cibleCaméra = new Vector3(0, 0, 0);
             Vector2 dimensionDialogue = new Vector2(Window.ClientBounds.Width / 3, Window.ClientBounds.Height);
-            Menu = new DialogueMenu(this, dimensionDialogue);
+            MenuAccueil = new DialogueMenu(this, dimensionDialogue);
             CaméraJeu = new CaméraSubjective(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
 
             CréationDuPanierDeServices();
-
-            Components.Add(GestionInput);
-            Components.Add(CaméraJeu);
-            Components.Add(Menu);
+            
             Components.Add(new ArrièrePlanSpatial(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
             Components.Add(new Afficheur3D(this));
             Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
+            Components.Add(GestionInput);
+            Components.Add(CaméraJeu);
+            Components.Add(MenuAccueil);
             base.Initialize();
         }
 
@@ -97,18 +99,16 @@ namespace AtelierXNA
             switch (ÉtatJeu)
             {
                 case États.MENU:
-                    if (Menu.ÉtatJouer)
+                    if (MenuAccueil.ÉtatJouer)
                     {
                         ÉtatJeu = États.JEU;
                         DémarrerPhaseDeJeu();
-                        Menu.BtnJouer.Enabled = false;
-                        Menu.BtnJouer.Visible = false;
-                        Menu.BtnInventaire.Enabled = false;
-                        Menu.BtnInventaire.Visible = false;
+                        MenuAccueil.VoirBouttonMenu(false);
                     }
-                    if (Menu.ÉtatInventaire)
+                    if (MenuAccueil.ÉtatInventaire)
                     {
                         ÉtatJeu = États.INVENTAIRE;
+                        MenuAccueil.VoirBouttonMenu(false);
                     }
                     break;
                 case États.JEU:
@@ -119,14 +119,16 @@ namespace AtelierXNA
 
         private void DémarrerPhaseDeJeu()
         {
-            Components.Add(new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, new Vector3(0, 0, 0), "bob", 0, 0, 0, 0, 1));
+            Guerrier pion = new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, Vector3.Zero, "bob", 0, 0, 0, 0, 1);
+            pion.DrawOrder = (int)OrdreDraw.MILIEU;
+            Components.Add(pion);
         }
 
         private void GérerClavier()
         {
             if (GestionInput.EstEnfoncée(Keys.Escape))
             {
-                Exit();
+                MenuAccueil.VoirBouttonMenu(true);
             }
         }
 
