@@ -36,14 +36,17 @@ namespace AtelierXNA
             Vector2 DimensionBouton = Police.MeasureString("Jouer");
             Vector2 PositionBouton = new Vector2(RectangleDestination.X + RectangleDestination.Width / 2f, (NB_ZONES_DIALOGUE - 2) * hauteurBouton);
             BtnJouer = new BoutonDeCommande(Game, "Jouer", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Jouer, INTERVALLE_MAJ_STANDARD);
+            BtnJouer.DrawOrder = (int)OrdreDraw.AVANT_PLAN;
 
             DimensionBouton = Police.MeasureString("Inventaire");
             PositionBouton = new Vector2(RectangleDestination.X + RectangleDestination.Width / 2f, (NB_ZONES_DIALOGUE - 1) * hauteurBouton);
             BtnInventaire = new BoutonDeCommande(Game, "Inventaire", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Inventaire, INTERVALLE_MAJ_STANDARD);
+            BtnInventaire.DrawOrder = (int)OrdreDraw.AVANT_PLAN;
 
             DimensionBouton = Police.MeasureString("Quitter");
             PositionBouton = new Vector2(DimensionBouton.X / 2, Game.Window.ClientBounds.Height - DimensionBouton.Y / 2);
             BtnQuitter = new BoutonDeCommande(Game, "Quitter", "Arial20", "BoutonRouge", "BoutonBleu", PositionBouton, true, Quitter, INTERVALLE_MAJ_STANDARD);
+            BtnQuitter.DrawOrder = (int)OrdreDraw.AVANT_PLAN;
 
             Game.Components.Add(BtnJouer);
             Game.Components.Add(BtnInventaire);

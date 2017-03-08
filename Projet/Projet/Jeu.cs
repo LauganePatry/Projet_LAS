@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AtelierXNA
 {
+    enum OrdreDraw { ARRIÈRE_PLAN, AVANT_PLAN};
     enum États { MENU, INVENTAIRE, QUITTER, CONNEXION, JEU, FIN_DE_JEU };
     public class Jeu : Microsoft.Xna.Framework.Game
     {
@@ -58,13 +59,13 @@ namespace AtelierXNA
             CaméraJeu = new CaméraSubjective(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
 
             CréationDuPanierDeServices();
-
-            Components.Add(GestionInput);
-            Components.Add(CaméraJeu);
-            Components.Add(MenuAccueil);
+            
             Components.Add(new ArrièrePlanSpatial(this, "CielÉtoilé", INTERVALLE_MAJ_STANDARD));
             Components.Add(new Afficheur3D(this));
             Components.Add(new AfficheurFPS(this, "Arial20", Color.Gold, INTERVALLE_CALCUL_FPS));
+            Components.Add(GestionInput);
+            Components.Add(CaméraJeu);
+            Components.Add(MenuAccueil);
             base.Initialize();
         }
 
@@ -117,7 +118,9 @@ namespace AtelierXNA
 
         private void DémarrerPhaseDeJeu()
         {
-            Components.Add(new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, Vector3.Zero, "bob", 0, 0, 0, 0, 1));
+            Guerrier pion = new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, Vector3.Zero, "bob", 0, 0, 0, 0, 1);
+            pion.DrawOrder = (int)OrdreDraw.ARRIÈRE_PLAN;
+            Components.Add(pion);
         }
 
         private void GérerClavier()
