@@ -14,14 +14,16 @@ namespace AtelierXNA
         public string Nom { get; private set; }
         public int NiveauRequis { get; private set; }
         public int Rareté {get; private set; }
+        public string RefImage { get; private set;}
 
-        public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté)
+        public Item(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté, string refImage)
         {
             Nom = nom;
             NiveauRequis = niveauRequis;
             NumeroID = numeroID;
             CatégoriePersonnage = catégoriePersonnage;
             Rareté = rareté;
+            RefImage = refImage;
         }
     }
 }

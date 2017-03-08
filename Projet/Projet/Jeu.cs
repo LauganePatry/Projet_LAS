@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace AtelierXNA
 {
     enum OrdreDraw { ARRIÈRE_PLAN, AVANT_PLAN};
