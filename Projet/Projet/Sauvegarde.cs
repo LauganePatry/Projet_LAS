@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Xna.Framework.Storage;
+using System.Collections.Generic;
 
 namespace AtelierXNA
 {
-    class Sauvegarde
+    public class Sauvegarde
     {
         StorageDevice device;
         string containerName = "MyGamesStorage";
