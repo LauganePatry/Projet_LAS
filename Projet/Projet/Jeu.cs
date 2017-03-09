@@ -96,6 +96,13 @@ namespace AtelierXNA
         protected override void Update(GameTime gameTime)
         {
             GérerClavier();
+            GérerTransition();
+            
+            base.Update(gameTime);
+        }
+
+        private void GérerTransition()
+        {
             switch (ÉtatJeu)
             {
                 case États.MENU:
@@ -114,7 +121,6 @@ namespace AtelierXNA
                 case États.JEU:
                     break;
             }
-            base.Update(gameTime);
         }
 
         private void DémarrerPhaseDeJeu()
