@@ -34,6 +34,7 @@ namespace AtelierXNA
         {
             get { return PtsDeVie == 0; }
         }
+        //public Expérience PtsExp { get; private set; }
         public int Niveau { get; private set; }
         public Arme Arme { get; private set; }
         public Armure Armure { get; private set; }
