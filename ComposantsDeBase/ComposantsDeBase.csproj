@@ -68,7 +68,6 @@
     <Compile Include="Caméra.cs" />
     <Compile Include="CaméraFixe.cs" />
     <Compile Include="CaméraSubjective.cs" />
-    <Compile Include="Carte,cs.cs" />
     <Compile Include="ICollisionable.cs" />
     <Compile Include="IDestructible.cs" />
     <Compile Include="InputManager.cs" />

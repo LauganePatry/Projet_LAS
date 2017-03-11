@@ -63,6 +63,7 @@
     <Compile Include="Arme.cs" />
     <Compile Include="Armure.cs" />
     <Compile Include="BoucleDeJeu.cs" />
+    <Compile Include="Carte.cs" />
     <Compile Include="DialogueMenu.cs" />
     <Compile Include="Guerrier.cs" />
     <Compile Include="Guérisseur.cs" />
