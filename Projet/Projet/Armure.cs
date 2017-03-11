@@ -9,11 +9,16 @@ namespace AtelierXNA
     {
         int Défense { get; set; }
 
-        public Armure(int numeroID, string nom, int niveauRequis, string rareté, string description)
-            :base(numeroID, nom, niveauRequis, rareté)
+        public Armure(int numeroID, string catégoriePersonnage, string nom, int niveauRequis, int rareté, string refImage, string statistiques)
+            :base(numeroID, catégoriePersonnage, nom, niveauRequis, rareté, refImage)
         {
-            string[] tableauDescription = description.Split('|');
-            Défense = int.Parse(tableauDescription[0]);
+            string[] tableauStats = statistiques.Split('|');
+            Défense = int.Parse(tableauStats[0]);
+        }
+
+        public int GetDéfense()
+        {
+            return Défense;
         }
     }
 }

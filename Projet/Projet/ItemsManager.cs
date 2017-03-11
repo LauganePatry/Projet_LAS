@@ -7,7 +7,7 @@ namespace AtelierXNA
 {
     static class ItemsManager
     {
-        static List<Item> Items { get; set; }
+        public static List<Item> Items { get; set; }
 
         static ItemsManager()
         {
@@ -19,25 +19,27 @@ namespace AtelierXNA
             char séparateur = ';';
 
             // Extraction du nom et de la catégorie de l'item du string description
-            string[] tableauDescription = description.Split(séparateur);
-            string catégorie = tableauDescription[0];
-            int numeroID = int.Parse(tableauDescription[1]);
-            string nom = tableauDescription[2];
-            int niveauRequis = int.Parse(tableauDescription[3]);
-            string rareté = tableauDescription[4];
-            string descriptionRestante = tableauDescription[5];
+            string[] tableauStatistiques = description.Split(séparateur);
+            string catégorieItem = tableauStatistiques[0];
+            string catégoriePersonnage = tableauStatistiques[1];
+            int numeroID = int.Parse(tableauStatistiques[2]);
+            string nom = tableauStatistiques[3];
+            int niveauRequis = int.Parse(tableauStatistiques[4]);
+            int rareté = int.Parse(tableauStatistiques[5]);
+            string refImage = tableauStatistiques[6];
+            string statistiques = tableauStatistiques[7];
 
             // Normaliser le nom de la catégorie pour calquer le nom des classes (Exemple : (J) + (eu) = Jeu)
-            catégorie = Char.ToUpper(catégorie[0]) + catégorie.Substring(1).ToLower();
+            catégorieItem = Char.ToUpper(catégorieItem[0]) + catégorieItem.Substring(1).ToLower();
 
             // Ajouter le nom du Namespace pour qualifier entièrement
-            catégorie = typeof(Program).Namespace + "." + catégorie;
+            catégorieItem = typeof(Program).Namespace + "." + catégorieItem;
 
             // Détermination d'un type en fonction de la chaine 'catégorie'
-            Type typeVoulu = Type.GetType(catégorie);
+            Type typeVoulu = Type.GetType(catégorieItem);
 
             // Tentative d'instanciation : le type de la valeur de retour est 'Object'
-            var objetCréé = Activator.CreateInstance(typeVoulu, numeroID, nom, niveauRequis, rareté, descriptionRestante);
+            var objetCréé = Activator.CreateInstance(typeVoulu, numeroID, catégoriePersonnage, nom, niveauRequis, rareté, refImage, statistiques);
 
             Items.Add(objetCréé as Item);
         }
