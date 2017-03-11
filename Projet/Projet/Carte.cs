@@ -10,12 +10,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 
-namespace Projet
-{
+namespace AtelierXNA
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
-    public class Carte : Microsoft.Xna.Framework.DrawableGameComponent
+    public class Carte : PrimitiveDeBaseAnimée
     {
         public Carte(Game game)
             : base(game)
