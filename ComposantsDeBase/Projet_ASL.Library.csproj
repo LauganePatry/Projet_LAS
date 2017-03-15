@@ -77,6 +77,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RessourceDeBase.cs" />
     <Compile Include="RessourcesManager.cs" />
+    <Compile Include="ServerLibrary\Data.cs" />
+    <Compile Include="ServerLibrary\Player.cs" />
     <Compile Include="TexteCentré.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
