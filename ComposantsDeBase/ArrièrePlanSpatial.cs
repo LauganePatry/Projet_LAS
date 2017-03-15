@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace AtelierXNA
+namespace Projet_ASL
 {
     public class ArrièrePlanSpatial : ArrièrePlanDéroulant
     {

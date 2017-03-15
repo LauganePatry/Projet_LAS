@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Projet_ASL;
 
 
 namespace AtelierXNA
@@ -125,7 +126,7 @@ namespace AtelierXNA
 
         private void DémarrerPhaseDeJeu()
         {
-            Guerrier pion = new Guerrier(this, "GuerrierB", 0.03f, Vector3.Zero, Vector3.Zero, "bob", 0, 0, 0, 0, 1);
+            var pion = new Mage(this, "Mage", 0.03f, Vector3.Zero, Vector3.Zero, "Jacques", 0, 0, 0, 0, 1);
             pion.DrawOrder = (int)OrdreDraw.MILIEU;
             Components.Add(pion);
         }

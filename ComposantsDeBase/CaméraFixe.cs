@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace AtelierXNA
+namespace Projet_ASL
 {
    public class CaméraFixe : Caméra
    {

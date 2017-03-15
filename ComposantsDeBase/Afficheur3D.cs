@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
-namespace AtelierXNA
+namespace Projet_ASL
 {
    public class Afficheur3D : Microsoft.Xna.Framework.DrawableGameComponent
    {

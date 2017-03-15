@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtelierXNA
+namespace Projet_ASL
 {
    public interface IDestructible
    {
